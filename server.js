@@ -8,6 +8,7 @@ const DB_ONLINE =
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 mongoose
   .connect(DB_ONLINE, {
     useNewUrlParser: true,
@@ -24,7 +25,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", require("./Route/Router"));
-app.use(cors());
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
